@@ -1,11 +1,13 @@
 import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Login from './login';
 
 const App = () => {
 
   return (
-    <div className="App">
-      Teste
-    </div>
+   <Routes>
+     <Route path="/" element={<Login/>}/>
+   </Routes>
   )
 }
 
