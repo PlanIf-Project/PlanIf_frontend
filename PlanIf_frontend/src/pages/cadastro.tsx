@@ -1,27 +1,32 @@
 import { useState } from "react";
-import "../styles/login-style.css"
-import planIfLogo from "../assets/logo.png"
+import "../styles/login-style.css";
+import planIfLogo from "../assets/logo.png";
+import { Navigate } from "react-router-dom";
 
-const Login = () => {
+const Cadastro = () => {
+    let usuarios = new Array<any>();
     const [error, setError] = useState(false);
-    const usuarios = [{email:'mariana@teste.com', senha: '123'}];
+    const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPass, setUserPass] = useState('');
   
 
 
-    const login = () => { 
-        let achado = usuarios
-            .filter(user => user.email == userEmail)
-            .filter(user => user.senha == userPass);
-        if(achado.length == 0) {
-            setError(true);
-        }
-        else {
-            setError(false);
-        }
+    const cadastro = () => { 
+       if(userName != "" && "" != null && userPass != "") {
+           let obj = {nome: userName, email: userEmail, senha: userPass};
+           usuarios.push(obj);
+           setError(false);
+           console.log(usuarios);
+       }
+       else {
+           setError(true);
+       }
     }
 
+    const handleChangeName = (event: any) => {
+        setUserName(event.target.value);
+      }
     const handleChangeEmail = (event: any) => {
       setUserEmail(event.target.value);
     }
@@ -36,6 +41,9 @@ const Login = () => {
         </div>
         <div className="form">
             <div>
+                <input className="input" placeholder="Nome" type="text" value={userName} onChange={handleChangeName}/>
+            </div>
+            <div>
                 <input className="input" placeholder="Email" type="text" value={userEmail} onChange={handleChangeEmail}/>
             </div>
             <div>
@@ -44,15 +52,15 @@ const Login = () => {
         </div>
         <div className="botoes">
             <div className="button">
-                <button onClick={login}> Login </button>
-                { error ? <p className="error"> Usuario não encontrado </p> : null}
+                <button onClick={cadastro}> Cadastrar </button>
+                { error ? <p className="error"> Erro ao cadastrar </p> : null }
             </div>
             <div className="login">
-                <p>  Não tem uma conta? <a href="/"> Cadastre-se!</a> </p>
+                <p>  Já tem uma conta? <a href="/login"> Faça Login! </a> </p>
             </div>
         </div>
   </div>
   )
 };
 
-export default Login;
+export default Cadastro;
