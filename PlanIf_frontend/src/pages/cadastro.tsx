@@ -2,15 +2,15 @@ import "../styles/login-style.css";
 import { useState } from "react";
 import planIfLogo from "../assets/logo.png";
 import axios from 'axios';
-import Login from "./login";
-import { Router } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Cadastro = (props: any) => {
-    const [error, setError] = useState(false);
+    const [error, setError] = useState({status: false, message: ''});
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPass, setUserPass] = useState('');
     const [userConfPass, setUserConfPass] = useState('');
+    const navigate = useNavigate();
     
 
 
@@ -18,21 +18,23 @@ const Cadastro = (props: any) => {
        if(valid(userName) && valid(userEmail) && valid(userPass) && valid(userConfPass) && userPass == userConfPass) {
            let obj = {nome: userName, email: userEmail, senha: userPass};
            axios.post('http://localhost:4000/api/usuarios', obj).then(response => {
-                if(response.status == 201) {
-                    alert(`Usuário ${obj.nome} cadastrado com sucesso!`)
-                    
+                if(response.status == 200 || response.status == 200 ) {
+                    setError({status: false, message:''}); 
+                    navigate(`/perfil/${response.data}`);
+                }
+                else if(response.status == 500) {
+                    setError({status: true, message:"Problema no servidor!"}); 
                 }
                 else {
-                    alert(`Falha ao cadastrar usuário ${obj.nome}.`)
+                    setError({status: true, message:`${response.statusText}`}); 
                 }
-            })
-           //setError(false);
-       }
-       else {
-           //setError(true);
-       }
+            });
+        }
+        else {
+            setError({status: true, message:"Algum dado inserido está errado, verifique novamente"});
+        }
     }
-
+    
     const valid = (value: string) => {
         if(value != null && value != undefined && value != '') {
             return true;
@@ -41,9 +43,9 @@ const Cadastro = (props: any) => {
             return false;
         }
     }
-
-  return (
-    <div className="page">
+    
+    return (
+        <div className="page">
         <div className="logo">
             <img id="logo_img" alt="Logo" src={planIfLogo}/>
         </div>
@@ -66,7 +68,7 @@ const Cadastro = (props: any) => {
         <div className="botoes">
             <div className="button">
                 <button onClick={cadastro}> Cadastrar </button>
-                { error ? <p className="error"> Erro ao cadastrar </p> : null }
+                { error.status ? <p className="error"> {error.message} </p> : null }
             </div>
             <div className="login">
                 <p>  Já tem uma conta? <a href="/login"> Faça Login! </a> </p>
