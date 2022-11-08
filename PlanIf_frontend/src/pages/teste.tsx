@@ -4,7 +4,7 @@ function Teste() {
   const [data, setData] = useState([{id: '', nome:'', email: '', senha:''}]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/usuarios",  { mode:'cors'})
+    fetch("http://localhost:4000/listarUsuarios",  { mode:'cors'})
       .then((res) => res.json())
       .then((data) => {
           setData(data)

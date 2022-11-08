@@ -14,7 +14,7 @@
     text-decoration: none;
 }
 
-body {
+.page {
     min-height: 100vh;
     background-color: var(--cor5);
     color: var(--cor5);
@@ -23,7 +23,7 @@ body {
     justify-content: center;
     flex-direction: column;
 }
-.page {
+.box {
     background-color: var(--cor1);
     border-radius: 25px;
     width: 600px;
@@ -55,7 +55,7 @@ body {
     flex-direction: column;
     align-items: center;
 }
-button, .salvar {
+.botao {
     background-color: var(--cor3);
     color: var(--cor5);
     border: none;

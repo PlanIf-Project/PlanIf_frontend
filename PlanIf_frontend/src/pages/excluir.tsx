@@ -5,7 +5,7 @@ import AppNavBar from "../components/navBar";
 import { Navbar } from "react-bootstrap";
 import axios from "axios";
 
-const Perfil = (props: any) => {
+const Excluir = (props: any) => {
     const params = useParams();
     const [error, setError] = useState({status: false, message: ''});
     const [user, setUser] = useState({id:'', nome:'', email:'', senha: ''});
@@ -86,4 +86,4 @@ const Perfil = (props: any) => {
   )
 };
 
-export default Perfil;
+export default Excluir;
