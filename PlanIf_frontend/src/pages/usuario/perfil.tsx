@@ -1,4 +1,4 @@
-import "../styles/usuario-style.css";
+import "../../styles/usuario-style.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -27,17 +27,17 @@ const Perfil = (props: any) => {
     return (
         <div className="page">
              <div className="box">
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1">Nome</span>
-                    <span className="form-control"aria-label="Username" aria-describedby="basic-addon1">{user.nome}</span>
+                <div>
+                    <span id="basic-addon1">Nome: </span>
+                    <span aria-label="Username" aria-describedby="basic-addon1">{user.nome}</span>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1">Email</span>
-                    <span className="form-control"aria-label="Username" aria-describedby="basic-addon1">{user.email}</span>
+                <div>
+                    <span id="basic-addon1">Email: </span>
+                    <span aria-label="Username" aria-describedby="basic-addon1">{user.email}</span>
                 </div>
-                <div className="input-group mb-3">
-                    <button className="input-group-text" id="basic-addon1" onClick={editar}>Editar</button>
-                    <button className="input-group-text" id="basic-addon1" onClick={excluir}>Excluir</button>
+                <div>
+                    <button className="botao" id="basic-addon1" onClick={editar}>Editar</button>
+                    <button className="botao" id="basic-addon1" onClick={excluir}>Excluir</button>
                 </div>       
             </div>
             <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>

@@ -66,6 +66,9 @@
     cursor: pointer;
 }
 
+.botao .excluir {
+    background-color: red;
+}
 .login {
     display: flex;
     flex-direction: column;

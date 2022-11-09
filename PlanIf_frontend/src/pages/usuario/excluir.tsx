@@ -1,4 +1,4 @@
-import "../styles/usuario-style.css";
+import "../../styles/usuario-style.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -19,12 +19,13 @@ const Excluir = (props: any) => {
       }, []);
   
       const excluir = () => { 
-        axios.delete(`http://localhost:4000/excluirUsuario/${user.id}`).then(response => {
+        axios.delete(`http://localhost:4000/excluirUsuario/${params.id}`).then(response => {
             if(response.status == 204 || response.status == 200 ) {
                 setError({status: false, message:''}); 
                 navigate(`/`);
             }
         }).catch(error => {
+            console.log(error)
             if(error.response.status == 400) {
                 setError({status: true, message:`${error.response.data}`});
             }
@@ -37,16 +38,17 @@ const Excluir = (props: any) => {
     return (
         <div className="page">
              <div className="box">
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1">Nome</span>
-                    <span className="form-control"aria-label="Username" aria-describedby="basic-addon1">{user.nome}</span>
+                <div>
+                    <span id="basic-addon1">Nome:        </span>
+                    <input className="input" placeholder="Nome" type="text" value={user.nome} disabled/>
                 </div>
-                <div className="input-group mb-3">
-                    <span className="input-group-text" id="basic-addon1">Email</span>
-                    <span className="form-control"aria-label="Username" aria-describedby="basic-addon1">{user.email}</span>
+                <div>
+                    <span id="basic-addon1">Email:      </span>
+                    <input className="input" placeholder="Nome" type="text" value={user.email} disabled/>
                 </div>
-                <div className="input-group mb-3">
-                    <button className=" input-group-textbotao" id="basic-addon1" onClick={excluir}> Excluir </button>
+                <div>
+                    <button className="botao" id="basic-addon1" onClick={() => navigate(`/perfil/${params.id}`)}> Voltar </button>
+                    <button className="botao exluir" id="basic-addon1" onClick={excluir}> Excluir </button>
                     { error.status ? <p className="error"> {error.message} </p> : null }
                 </div>       
             </div>

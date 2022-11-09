@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import "../../styles/usuario-style.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Teste() {
   const [data, setData] = useState([{id: '', nome:'', email: '', senha:''}]);
@@ -14,19 +16,20 @@ function Teste() {
   }, []);
 
   return (
-    <div >
-
+    <div className="page">
         { 
         data == undefined ? null : 
             data.map((i:any) =>
             <div style={{color:"white"}} key={i.id}>
-            <p>{ i.nome }</p>
-            <p>{ i.email }</p>
-            <p>{ i.senha }</p>
-            <br/>
+              <p>{ i.nome }</p>
+              <p>{ i.email }</p>
+              <p>{ i.senha }</p>
+              <br/>
             </div> 
             )
         }
+
+
         
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/usuario-style.css"
+import "../../styles/usuario-style.css"
 import planIfLogo from "../../assets/logo.png"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -63,7 +63,7 @@ const Login = () => {
             </div>
             <div className="botoes">
                 <div className="button">
-                    <button onClick={login}> Login </button>
+                    <button className="botao" onClick={login}> Login </button>
                     { error.status ? <p className="error"> {error.message} </p> : null}
                 </div>
                 <div className="login">
