@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "../styles/login-style.css"
-import planIfLogo from "../assets/logo.png"
+import "../styles/usuario-style.css"
+import planIfLogo from "../../assets/logo.png"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 

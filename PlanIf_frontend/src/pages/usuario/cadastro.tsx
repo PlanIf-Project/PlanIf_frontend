@@ -1,6 +1,6 @@
-import "../styles/login-style.css";
+import "../../styles/usuario-style.css";
 import { useState } from "react";
-import planIfLogo from "../assets/logo.png";
+import { planIfLogo } from "../../assets/logo.png";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
@@ -74,7 +74,7 @@ const Cadastro = (props: any) => {
                         { error.status ? <p className="error"> {error.message} </p> : null }
                     </div>
                     <div className="login">
-                        <p>  Já tem uma conta? <a href="/login"> Faça Login! </a> </p>
+                        <p> Já tem uma conta? <a href="/login"> Faça Login! </a> </p>
                     </div>
                 </div>
             </div>
