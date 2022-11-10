@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
-import Cadastro from './usuario/cadastro';
-import Editar from './usuario/editar';
-import Excluir from './usuario/excluir';
-import Login from './usuario/login';
-import Perfil from './usuario/perfil';
-import Teste from './usuario/teste';
+import Cadastro from './pages/usuario/cadastro';
+import Editar from './pages/usuario/editar';
+import Excluir from './pages/usuario/excluir';
+import Login from './pages/usuario/login';
+import Perfil from './pages/usuario/perfil';
+import Teste from './pages/usuario/teste';
 
 const App = () => {
 
