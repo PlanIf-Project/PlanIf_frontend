@@ -2,8 +2,6 @@
 
 O **PlanIf** tem o objetivo de ser um aplicativo de organização para estudantes. E está sendo desenvolvido para o conglomerado das disciplinas de Projeto de Interface do Usuário e Projeto de Desenvolvimento de Sistemas para Internet.
 
-O repositório __PlanIf_frontend__ é responsável pela parte frontend do projeto, desenvolvido utilizando React.
-
 ### Documentação:
 * [Documento de visão](./docs/doc-de-visao.md)
 * [Diagrama de casos de uso](./diagramas/Diagrama-Casos-De-Uso.png)
@@ -23,5 +21,3 @@ O repositório __PlanIf_frontend__ é responsável pela parte frontend do projet
 * [Danielle Freitas](https://github.com/danigfreitas)
 * [Leonardo Minora](https://github.com/leonardo-minora)
 * [Sales Filho](https://github.com/salesfilho)
-
-### Como baixar e executar:
