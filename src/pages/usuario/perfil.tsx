@@ -27,6 +27,7 @@ const Perfil = (props: any) => {
     return (
         <div className="page">
              <div className="box">
+             <h1> <a href="/teste"> TESTE </a></h1>
                 <div>
                     <span id="basic-addon1">Nome: </span>
                     <span aria-label="Username" aria-describedby="basic-addon1">{user.nome}</span>

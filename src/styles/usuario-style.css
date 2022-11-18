@@ -75,7 +75,8 @@
     align-items: center;
     margin-top: 10px;
 }
-a {
+.login a {
+    text-decoration: none;
     color: var(--cor3);
 }
 .error {
