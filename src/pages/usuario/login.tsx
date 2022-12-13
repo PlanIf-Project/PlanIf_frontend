@@ -17,6 +17,7 @@ const Login = () => {
             axios.post('http://localhost:4000/login', obj).then(response => {
                 if(response.status == 204 || response.status == 200 ) {
                     setError({status: false, message:''}); 
+                    localStorage.setItem('token', response.data.token)
                     navigate(`/perfil/${response.data.id}`);
                  }
                 
