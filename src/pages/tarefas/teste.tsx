@@ -10,7 +10,7 @@ function Teste() {
     myHeaders.append('x-access-token', localStorage.getItem('token')!);
 
   useEffect(() => {
-    fetch("http://localhost:4000/usuarios/listarUsuarios",  { mode:'cors', headers: myHeaders})
+    fetch("http://localhost:4000/tarefas/listarTarefas",  { mode:'cors', headers: myHeaders})
       .then((res) => res.json())
       .then((data) => {
           setData(data)

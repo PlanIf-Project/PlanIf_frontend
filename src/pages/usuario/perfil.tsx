@@ -11,26 +11,33 @@ const Perfil = (props: any) => {
     myHeaders.append('x-access-token', localStorage.getItem('token')!);
     
     useEffect(() => {
-        fetch(`http://localhost:4000/verUsuario/${params.id}`, { mode:'cors', headers: myHeaders})
-          .then((res) => res.json()) 
-          .then((data) => {
-              setUser(data);
-          }
-        ).catch(() => {navigate(`/login`);});
-      }, []);
+        fetch(`http://localhost:4000/usuarios/verUsuario/${params.id}`, { mode:'cors', headers: myHeaders})
+            .then((res) => res.json()) 
+            .then((data) => {
+                setUser(data);
+            })
+            .catch(() => {
+                navigate(`/login`);
+            });
+        }, 
+    []);
   
-      const editar = () => { 
+    const editar = () => { 
         navigate(`/perfil/editar/${user.id}`);
      }
 
-     const excluir = () => { 
+    const excluir = () => { 
         navigate(`/perfil/excluir/${user.id}`);
-     }
+    }
+    
+    const logout = () => {
+        localStorage.removeItem('token');
+        navigate(`/login`);
+    }
         
     return (
         <div className="page">
-             <div className="box">
-             <h1> <a href="/teste"> TESTE </a></h1>
+            <div className="box">
                 <div>
                     <span id="basic-addon1">Nome: </span>
                     <span aria-label="Username" aria-describedby="basic-addon1">{user.nome}</span>
@@ -43,11 +50,12 @@ const Perfil = (props: any) => {
                     <button className="botao" id="basic-addon1" onClick={editar}>Editar</button>
                     <button className="botao" id="basic-addon1" onClick={excluir}>Excluir</button>
                 </div>       
+                <br></br><br></br>
+                <button className="botao" id="basic-addon1" onClick={logout}>Sair</button>
             </div>
             <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
         </div>
-    
-  )
+    )
 };
 
 export default Perfil;

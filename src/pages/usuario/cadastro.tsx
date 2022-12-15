@@ -16,7 +16,7 @@ const Cadastro = (props: any) => {
        if(valid(userName) && valid(userEmail) && valid(userPass) && valid(userConfPass) && userPass == userConfPass) {
            let obj = {nome: userName, email: userEmail, senha: userPass};
          
-           axios.post('http://localhost:4000/criarUsuario', obj).then(response => {
+           axios.post('http://localhost:4000/usuarios/criarUsuario', obj).then(response => {
                if(response.status == 204 || response.status == 200 ) {
                    setError({status: false, message:''}); 
                    navigate(`/perfil/${response.data}`);

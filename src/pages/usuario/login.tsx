@@ -14,7 +14,7 @@ const Login = () => {
         if(valid(userEmail) && valid(userPass)) {
             let obj = {email: userEmail, senha: userPass};
           
-            axios.post('http://localhost:4000/login', obj).then(response => {
+            axios.post('http://localhost:4000/usuarios/login', obj).then(response => {
                 if(response.status == 204 || response.status == 200 ) {
                     setError({status: false, message:''}); 
                     localStorage.setItem('token', response.data.token)
