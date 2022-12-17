@@ -1,5 +1,5 @@
 ### Como baixar:
-* Clona o projeto: ``` git clone https://github.com/PlanIf-Project/PlanIf_frontend.git``` para clonar o projeto;
+* Clona o projeto: ``` git clone https://github.com/PlanIf-Project/PlanIf_frontend.git```
 * Entra dentro da pasta: ``` cd PlanIf_frontend```
 * Baixa os pacotes necessários: ``` npm i ```
 * Rode o projeto: ``` npm run dev ```
