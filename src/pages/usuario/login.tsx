@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/usuario-style.css"
+import "../../styles/styles.css"
 import planIfLogo from "../../assets/logo.png"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";

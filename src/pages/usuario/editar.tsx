@@ -1,4 +1,4 @@
-import "../../styles/usuario-style.css";
+import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -53,7 +53,7 @@ const Editar = (props: any) => {
                 </div>
                 <div>
                     <span id="basic-addon1">Email:    </span>
-                    <input className="input" placeholder="Nome" type="text" value={user.email} onChange={(e)=> setUser({id: user.id , nome: user.nome, email: e.target.value, senha: user.senha})}/>
+                    <input className="input" placeholder="Email" type="text" value={user.email} onChange={(e)=> setUser({id: user.id , nome: user.nome, email: e.target.value, senha: user.senha})}/>
                     
                 </div>
                 <div>
@@ -62,7 +62,6 @@ const Editar = (props: any) => {
                     { error.status ? <p className="error"> {error.message} </p> : null }
                 </div>       
             </div>
-            <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
         </div>
     )
 };

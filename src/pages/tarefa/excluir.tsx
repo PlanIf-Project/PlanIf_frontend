@@ -3,36 +3,34 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const Excluir = (props: any) => {
+const ExcluirTarefa = (props: any) => {
     const params = useParams();
-    const [error, setError] = useState({status: false, message: ''});
-    const [user, setUser] = useState({id:'', nome:'', email:'', senha: ''});
+    const [tarefa, setTarefa] = useState({id:'', nome:'', data:'', descricao: ''});
     const navigate = useNavigate();
     
     let myHeaders = new Headers();
     myHeaders.append('x-access-token', localStorage.getItem('token')!);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/usuarios/verUsuario/${params.id}`, { mode:'cors', headers: myHeaders})
+        fetch(`http://localhost:4000/tarefas/verTarefa/${params.id}`, { mode:'cors', headers: myHeaders})
           .then((res) => res.json())
           .then((data) => {
-              setUser(data)
+              setTarefa(data)
           }
         ).catch(() => {navigate(`/login`);});
     }, [])
   
       const excluir = () => { 
-        axios.delete(`http://localhost:4000/usuarios/excluirUsuario/${params.id}`).then(response => {
+        axios.delete(`http://localhost:4000/tarefas/excluirTarefa/${params.id}`).then(response => {
             if(response.status == 204 || response.status == 200 ) {
-                setError({status: false, message:''}); 
                 navigate(`/`);
             }
         }).catch(error => {
             if(error.response.status == 400) {
-                setError({status: true, message:`${error.response.data}`});
+                console.error(error.response.data);
             }
             else if(error.response.status == 500) {
-                setError({status: true, message:"Problema no servidor!"}); 
+                console.error("Problema no servidor!"); 
             }
         });
      }
@@ -42,20 +40,23 @@ const Excluir = (props: any) => {
              <div className="box">
                 <div>
                     <span id="basic-addon1">Nome:        </span>
-                    <input className="input" placeholder="Nome" type="text" value={user.nome} disabled/>
+                    <input className="input" placeholder="Nome" type="text" value={tarefa.nome} disabled/>
                 </div>
                 <div>
-                    <span id="basic-addon1">Email:      </span>
-                    <input className="input" placeholder="Email" type="text" value={user.email} disabled/>
+                    <span id="basic-addon1">Data:      </span>
+                    <input className="input" placeholder="Data" type="text" value={tarefa.data} disabled/>
                 </div>
                 <div>
-                    <button className="botao" id="basic-addon1" onClick={() => navigate(`/perfil/${params.id}`)}> Voltar </button>
+                    <span id="basic-addon1">Descrição:      </span>
+                    <input className="input" placeholder="Descrição" type="text" value={tarefa.descricao} disabled/>
+                </div>
+                <div>
+                    <button className="botao" id="basic-addon1" onClick={() => navigate(`/tarefas`)}> Voltar </button>
                     <button className="botao exluir" id="basic-addon1" onClick={excluir}> Excluir </button>
-                    { error.status ? <p className="error"> {error.message} </p> : null }
                 </div>       
             </div>
         </div>
   )
 };
 
-export default Excluir;
+export default ExcluirTarefa;

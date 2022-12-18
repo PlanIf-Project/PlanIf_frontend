@@ -1,4 +1,4 @@
-import "../../styles/usuario-style.css";
+import "../../styles/styles.css";
 import { useState } from "react";
 import planIfLogo  from "../../assets/logo.png";
 import axios from 'axios';
