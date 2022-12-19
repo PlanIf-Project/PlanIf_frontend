@@ -9,7 +9,7 @@ const Excluir = (props: any) => {
     const [user, setUser] = useState({id:'', nome:'', email:'', senha: ''});
     const navigate = useNavigate();
     
-    let myHeaders = new Headers();
+    const myHeaders = new Headers();
     myHeaders.append('x-access-token', localStorage.getItem('token')!);
 
     useEffect(() => {
@@ -22,7 +22,8 @@ const Excluir = (props: any) => {
     }, [])
   
       const excluir = () => { 
-        axios.delete(`http://localhost:4000/usuarios/excluirUsuario/${params.id}`).then(response => {
+        axios.delete(`http://localhost:4000/usuarios/excluirUsuario/${params.id}`, { headers: {'x-access-token':localStorage.getItem('token')!}})
+        .then(response => {
             if(response.status == 204 || response.status == 200 ) {
                 setError({status: false, message:''}); 
                 navigate(`/`);

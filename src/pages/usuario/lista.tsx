@@ -20,7 +20,7 @@ const Index = () => {
         navigate(`/login`);
     });
 }, 
-[])
+[usuarios])
 
   return (
     <div className="page">

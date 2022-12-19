@@ -26,7 +26,7 @@ const Editar = (props: any) => {
   
     const editar = () => { 
         let obj = {id: user.id , nome: user.nome, email: user.email, senha: user.senha};
-        axios.put('http://localhost:4000/usuarios/editarUsuario', obj)
+        axios.put('http://localhost:4000/usuarios/editarUsuario', obj, { headers: {'x-access-token':localStorage.getItem('token')!}})
             .then(response => {
                 if(response.status == 204 || response.status == 200 ) {
                     setError({status: false, message:''}); 

@@ -34,6 +34,9 @@ const Perfil = (props: any) => {
         localStorage.removeItem('token');
         navigate(`/login`);
     }
+    const listaTarefas = () => {
+        navigate(`/tarefas`)
+    }
         
     return (
         <div className="page">
@@ -49,7 +52,9 @@ const Perfil = (props: any) => {
                 <div>
                     <button className="botao" id="basic-addon1" onClick={editar}>Editar</button>
                     <button className="botao" id="basic-addon1" onClick={excluir}>Excluir</button>
-                </div>       
+                </div>
+                <br></br><br></br>
+                <button className="botao" id="basic-addon1" onClick={listaTarefas}> Lista de Tarefas</button>
                 <br></br><br></br>
                 <button className="botao" id="basic-addon1" onClick={logout}>Sair</button>
             </div>

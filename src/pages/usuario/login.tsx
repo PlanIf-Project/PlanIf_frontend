@@ -22,8 +22,7 @@ const Login = () => {
                  }
                 
              }).catch(error => {
-                 console.log(error)
-                 if(error.response.status == 400) {
+                 if(error.response.status == 400 || error.response.status == 404) {
                      setError({status: true, message:`${error.response.data}`});
                  }
                   else if(error.response.status == 500) {
