@@ -21,9 +21,10 @@ const ExcluirTarefa = (props: any) => {
     }, [])
   
       const excluir = () => { 
-        axios.delete(`http://localhost:4000/tarefas/excluirTarefa/${params.id}`).then(response => {
+        axios.delete(`http://localhost:4000/tarefas/excluirTarefa/${params.id}`, { headers: {'x-access-token':localStorage.getItem('token')!}})
+        .then(response => {
             if(response.status == 204 || response.status == 200 ) {
-                navigate(`/`);
+                navigate(`/tarefas`);
             }
         }).catch(error => {
             if(error.response.status == 400) {

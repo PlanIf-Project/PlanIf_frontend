@@ -19,9 +19,10 @@ const Cadastro = (props: any) => {
            axios.post('http://localhost:4000/usuarios/criarUsuario', obj).then(response => {
                if(response.status == 204 || response.status == 200 ) {
                     localStorage.setItem('token', response.data.token)
-                   setError({status: false, message:''}); 
-                   navigate(`/perfil/${response.data.id}`);
-                }
+                    localStorage.setItem('idUsuario', response.data.id)
+                    setError({status: false, message:''}); 
+                    navigate(`/perfil/${response.data.id}`);
+                }   
                
             }).catch(error => {
                 if(error.response.status == 400) {

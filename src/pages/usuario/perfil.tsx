@@ -32,6 +32,7 @@ const Perfil = (props: any) => {
     
     const logout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('idUsuario');
         navigate(`/login`);
     }
     const listaTarefas = () => {

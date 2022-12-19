@@ -26,7 +26,7 @@ const App = () => {
       {/* TAREFA*/}
       <Route path="/tarefas" element={<ListaTarefas/>}/>
       <Route path="/tarefas/cadastro" element={<CadastroTarefa/>}/>
-      <Route path="/tarefas/detalhes" element={<DetalhesTarefa/>}/>
+      <Route path="/tarefas/detalhes/:id" element={<DetalhesTarefa/>}/>
       <Route path="/tarefas/editar/:id" element={<EditarTarefa/>}/>
       <Route path="/tarefas/excluir/:id" element={<ExcluirTarefa/>}/>
     </Routes>

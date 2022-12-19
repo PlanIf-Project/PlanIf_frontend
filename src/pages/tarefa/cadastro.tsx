@@ -11,7 +11,7 @@ const CadastroTarefa = (props: any) => {
 
     const cadastro = () => { 
        if(valid(nome) && valid(data) && valid(descricao)) {
-           let obj = {nome: name, data: data, descricao: descricao};
+           let obj = {nome: nome, data: data, descricao: descricao, idUsuario: localStorage.getItem('idUsuario')!};
          
            axios.post('http://localhost:4000/tarefas/criarTarefa', obj, { headers: {'x-access-token':localStorage.getItem('token')!}} )
            .then(response => {

@@ -25,7 +25,7 @@ const EditarTarefa = (props: any) => {
   
     const editar = () => { 
         let obj = {id: tarefa.id, nome: tarefa.nome, data: tarefa.data, descricao: tarefa.descricao};
-        axios.put('http://localhost:4000/tarefas/editarTarefa', obj)
+        axios.put('http://localhost:4000/tarefas/editarTarefa', obj, { headers: {'x-access-token':localStorage.getItem('token')!}})
             .then(response => {
                 if(response.status == 204 || response.status == 200 ) {
                     navigate(`/tarefas`);
