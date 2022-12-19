@@ -10,7 +10,7 @@ const CadastroTarefa = (props: any) => {
     const navigate = useNavigate();
 
     const cadastro = () => { 
-       if(valid(nome) && valid(data) && valid(descricao)) {
+       if(valid(nome)) {
            let obj = {nome: nome, data: data, descricao: descricao, idUsuario: localStorage.getItem('idUsuario')!};
          
            axios.post('http://localhost:4000/tarefas/criarTarefa', obj, { headers: {'x-access-token':localStorage.getItem('token')!}} )
@@ -20,7 +20,10 @@ const CadastroTarefa = (props: any) => {
                 }
                
             }).catch(error => {
-               console.error(error);
+                console.error(error);
+                if(error.response.status == 401 || error.response.status == 403) {
+                    navigate("/login")
+                }
             });
         }
         else {

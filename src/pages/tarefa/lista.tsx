@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ListaTarefas = (props: any) => {
-    const [tarefas, setTarefas] = useState([{id:'', nome:'', data:'', descricao: ''}]);
+    const [tarefas, setTarefas] = useState([{id:'', nome:'', data:'', descricao: '', idUsuario: ''}]);
     const [carregando, setCarregando] = useState(true);
     const navigate = useNavigate();
 
@@ -11,14 +11,13 @@ const ListaTarefas = (props: any) => {
     myHeaders.append('x-access-token', localStorage.getItem('token')!);
     
     useEffect(() => {
-        fetch(`http://localhost:4000/tarefas/listarTarefas`, { mode:'cors', headers: myHeaders})
+        fetch(`http://localhost:4000/tarefas/listarTarefas/${localStorage.getItem('idUsuario')!}`, { mode:'cors', headers: myHeaders})
             .then((res) => res.json()) 
             .then((data) => {
                 setTarefas(data);
                 setCarregando(false);
             })
             .catch((err) => {
-                console.log(err)
                 navigate(`/login`);
                 setCarregando(false);
             });
@@ -50,7 +49,8 @@ const ListaTarefas = (props: any) => {
                     <div>
                         {
                             tarefas.map((tarefa:any) => 
-                                <div key={tarefa.id} onClick={() => detalhar(tarefa.id)}>
+                                <div key={tarefa.id}>
+                                    <div onClick={() => detalhar(tarefa.id)}>
                                     <div >
                                         <span id="basic-addon1">Nome: </span>
                                         <span aria-label="Nome" aria-describedby="basic-addon1">{tarefa.nome}</span>
@@ -62,6 +62,7 @@ const ListaTarefas = (props: any) => {
                                     <div>
                                         <span id="basic-addon1">Descrição: </span>
                                         <span aria-label="Descrição" aria-describedby="basic-addon1">{tarefa.descricao}</span>
+                                    </div>
                                     </div>
                                     <div>
                                         <button className="botao" id="basic-addon1" onClick={() => editar(tarefa.id)}>Editar</button>

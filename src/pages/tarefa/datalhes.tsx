@@ -23,11 +23,11 @@ const DetalhesTarefa = (props: any) => {
     []);
   
     const editar = () => { 
-        navigate(`/tarefa/editar/${tarefa.id}`);
+        navigate(`/tarefas/editar/${tarefa.id}`);
      }
 
     const excluir = () => { 
-        navigate(`/tarefa/excluir/${tarefa.id}`);
+        navigate(`/tarefas/excluir/${tarefa.id}`);
     }
     
     const voltar = () => {
