@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ExcluirTarefa = (props: any) => {
     const params = useParams();
-    const [tarefa, setTarefa] = useState({id:'', nome:'', data:'', descricao: ''});
+    const [tarefa, setTarefa] = useState({id:'', nome:'', data:'', descricao: '', feito: false});
     const navigate = useNavigate();
     
     let myHeaders = new Headers();

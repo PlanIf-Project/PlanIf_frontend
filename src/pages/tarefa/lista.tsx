@@ -1,9 +1,10 @@
 import "../../styles/styles.css";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const ListaTarefas = (props: any) => {
-    const [tarefas, setTarefas] = useState([{id:'', nome:'', data:'', descricao: '', idUsuario: ''}]);
+    const [tarefas, setTarefas] = useState([{id:'', nome:'', data:'', descricao: '', feito: false, idUsuario: ''}]);
     const [carregando, setCarregando] = useState(true);
     const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const ListaTarefas = (props: any) => {
                 setCarregando(false);
             });
         }, 
-    []);
+    [tarefas]);
       
     const editar = (id: number) => { 
         navigate(`/tarefas/editar/${id}`);
@@ -39,9 +40,30 @@ const ListaTarefas = (props: any) => {
         navigate(`/tarefas/detalhes/${id}`)
     }
 
+    const handleChecked = (e: any, tarefa: any) => {
+        let obj = {id: tarefa.id, nome: tarefa.nome, data: tarefa.data, descricao: tarefa.descricao, feito: !(tarefa.feito)};
+        axios.put('http://localhost:4000/tarefas/editarTarefa', obj, { headers: {'x-access-token':localStorage.getItem('token')!}})
+            .then(response => {
+                if(response.status == 204 || response.status == 200 ) {
+                    navigate(`/tarefas`);
+                }
+            })
+            .catch(error => {
+                console.log(error)
+                if(error.response.status == 400) {
+                    console.error(error.response.data);
+                }
+                else if(error.response.status == 500) {
+                    console.error("Problema no servidor!"); 
+                }
+            }
+        );
+    }
+
     return (
         <div className="page">
             <div className="box">
+                <button className="botao" id="basic-addon1" onClick={() => navigate(`/perfil/${localStorage.getItem('idUsuario')!}`)}> Perfil </button>
                 <button className="botao" id="basic-addon1" onClick={cadastrar}> Cadastrar nova tarefa </button>
                 
                 {
@@ -50,6 +72,7 @@ const ListaTarefas = (props: any) => {
                         {
                             tarefas.map((tarefa:any) => 
                                 <div key={tarefa.id}>
+                                    <input type={"checkbox"} checked={tarefa.feito} onChange={(e) => handleChecked(e, tarefa)}/>
                                     <div onClick={() => detalhar(tarefa.id)}>
                                     <div >
                                         <span id="basic-addon1">Nome: </span>

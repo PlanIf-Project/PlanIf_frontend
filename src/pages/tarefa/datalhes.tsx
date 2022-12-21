@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const DetalhesTarefa = (props: any) => {
     const params = useParams();
-    const [tarefa, setTarefa] = useState({id:'', nome:'', data:'', descricao: ''});
+    const [tarefa, setTarefa] = useState({id:'', nome:'', data:'', descricao: '', feito: false});
     const navigate = useNavigate();
 
     let myHeaders = new Headers();

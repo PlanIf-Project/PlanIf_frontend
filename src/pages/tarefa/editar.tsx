@@ -5,7 +5,7 @@ import axios from "axios";
 
 const EditarTarefa = (props: any) => {
     const params = useParams();
-    const [tarefa, setTarefa] = useState({id:'', nome:'', data:'', descricao: ''});
+    const [tarefa, setTarefa] = useState({id:'', nome:'', data:'', descricao: '', feito: false});
     const navigate = useNavigate();
     
     let myHeaders = new Headers();
@@ -47,16 +47,16 @@ const EditarTarefa = (props: any) => {
             <div className="box">
                 <div>
                     <span id="basic-addon1">Nome:    </span>
-                    <input className="input" placeholder="Nome" type="text" value={tarefa.nome} onChange={(e)=> setTarefa({id: tarefa.id, nome: e.target.value, data: tarefa.data, descricao: tarefa.descricao})}/>
+                    <input className="input" placeholder="Nome" type="text" value={tarefa.nome} onChange={(e)=> setTarefa({id: tarefa.id, nome: e.target.value, data: tarefa.data, descricao: tarefa.descricao, feito: tarefa.feito})}/>
                 </div>
                 <div>
                     <span id="basic-addon1"> Data:    </span>
-                    <input className="input" placeholder="Data" type="text" value={tarefa.data} onChange={(e)=> setTarefa({id: tarefa.id, nome: tarefa.nome, data: e.target.value, descricao: tarefa.descricao})}/>
+                    <input className="input" placeholder="Data" type="text" value={tarefa.data} onChange={(e)=> setTarefa({id: tarefa.id, nome: tarefa.nome, data: e.target.value, descricao: tarefa.descricao, feito:  tarefa.feito})}/>
                     
                 </div>
                 <div>
                     <span id="basic-addon1"> Descrição:    </span>
-                    <input className="input" placeholder="Descrição" type="text" value={tarefa.data} onChange={(e)=> setTarefa({id: tarefa.id, nome: tarefa.nome, data: tarefa.data, descricao: e.target.value})}/>
+                    <input className="input" placeholder="Descrição" type="text" value={tarefa.data} onChange={(e)=> setTarefa({id: tarefa.id, nome: tarefa.nome, data: tarefa.data, descricao: e.target.value, feito:  tarefa.feito})}/>
                     
                 </div>
                 <div>
