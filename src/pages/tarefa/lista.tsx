@@ -2,6 +2,7 @@ import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 
 const ListaTarefas = (props: any) => {
     const [tarefas, setTarefas] = useState([{id:'', nome:'', data:'', descricao: '', feito: false, idUsuario: ''}]);
@@ -70,29 +71,58 @@ const ListaTarefas = (props: any) => {
                 carregando ? null :
                     <div>
                         {
-                            tarefas.map((tarefa:any) => 
-                                <div key={tarefa.id}>
-                                    <input type={"checkbox"} checked={tarefa.feito} onChange={(e) => handleChecked(e, tarefa)}/>
-                                    <div onClick={() => detalhar(tarefa.id)}>
-                                    <div >
-                                        <span id="basic-addon1">Nome: </span>
-                                        <span aria-label="Nome" aria-describedby="basic-addon1">{tarefa.nome}</span>
+                            tarefas.map((tarefa:any) =>
+                            <> { 
+                                (tarefa.feito == true) ?
+                                    <div key={tarefa.id}>
+                                        <input type={"checkbox"} checked={tarefa.feito} onChange={(e) => handleChecked(e, tarefa)}/>
+                                        <div onClick={() => detalhar(tarefa.id)}>
+                                        <div >
+                                            <span id="basic-addon1"> <s>Nome: </s> </span>
+                                            <span aria-label="Nome" aria-describedby="basic-addon1">{tarefa.nome}</span>
+                                        </div>
+                                        <div>
+                                            <span id="basic-addon1">Data: </span>
+                                            <span aria-label="Data" aria-describedby="basic-addon1">{moment(tarefa.data).format('DD/MM/YYYY')}</span>
+                                        </div>
+                                        <div>
+                                            <span id="basic-addon1">Descrição: </span>
+                                            <span aria-label="Descrição" aria-describedby="basic-addon1">{tarefa.descricao}</span>
+                                        </div>
+                                        </div>
+                                        <div>
+                                            <button className="botao" id="basic-addon1" onClick={() => editar(tarefa.id)}>Editar</button>
+                                            <button className="botao" id="basic-addon1" onClick={() => excluir(tarefa.id)}>Excluir</button>
+                                        </div>       
+                                        <br></br>
                                     </div>
-                                    <div>
-                                        <span id="basic-addon1">Data: </span>
-                                        <span aria-label="Data" aria-describedby="basic-addon1">{tarefa.data}</span>
+                                    :
+
+                                    <div key={tarefa.id}>
+                                        <input type={"checkbox"} checked={tarefa.feito} onChange={(e) => handleChecked(e, tarefa)}/>
+                                        <div onClick={() => detalhar(tarefa.id)}>
+                                        <div >
+                                            <span id="basic-addon1">Nome: </span>
+                                            <span aria-label="Nome" aria-describedby="basic-addon1">{tarefa.nome}</span>
+                                        </div>
+                                        <div>
+                                            <span id="basic-addon1">Data: </span>
+                                            <span aria-label="Data" aria-describedby="basic-addon1">{moment(tarefa.data).format('DD/MM/YYYY')}</span>
+                                        </div>
+                                        <div>
+                                            <span id="basic-addon1">Descrição: </span>
+                                            <span aria-label="Descrição" aria-describedby="basic-addon1">{tarefa.descricao}</span>
+                                        </div>
+                                        </div>
+                                        <div>
+                                            <button className="botao" id="basic-addon1" onClick={() => editar(tarefa.id)}>Editar</button>
+                                            <button className="botao" id="basic-addon1" onClick={() => excluir(tarefa.id)}>Excluir</button>
+                                        </div>       
+                                        <br></br>
                                     </div>
-                                    <div>
-                                        <span id="basic-addon1">Descrição: </span>
-                                        <span aria-label="Descrição" aria-describedby="basic-addon1">{tarefa.descricao}</span>
-                                    </div>
-                                    </div>
-                                    <div>
-                                        <button className="botao" id="basic-addon1" onClick={() => editar(tarefa.id)}>Editar</button>
-                                        <button className="botao" id="basic-addon1" onClick={() => excluir(tarefa.id)}>Excluir</button>
-                                    </div>       
-                                    <br></br>
-                                </div>
+                                }  
+                            
+                            </>
                             )
                         }
                     </div> 

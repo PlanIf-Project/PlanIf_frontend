@@ -26,6 +26,8 @@ const Excluir = (props: any) => {
         .then(response => {
             if(response.status == 204 || response.status == 200 ) {
                 setError({status: false, message:''}); 
+                localStorage.removeItem('token');
+                localStorage.removeItem('idUsuario');
                 navigate(`/`);
             }
         }).catch(error => {

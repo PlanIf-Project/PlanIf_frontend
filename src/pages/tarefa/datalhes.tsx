@@ -1,6 +1,7 @@
 import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import moment from "moment";
 
 const DetalhesTarefa = (props: any) => {
     const params = useParams();
@@ -43,7 +44,7 @@ const DetalhesTarefa = (props: any) => {
                 </div>
                 <div>
                     <span id="basic-addon1">Data: </span>
-                    <span aria-label="Data" aria-describedby="basic-addon1">{tarefa.data}</span>
+                    <span aria-label="Data" aria-describedby="basic-addon1">{moment(tarefa.data).format('DD/MM/YYYY')}</span>
                 </div>
                 <div>
                     <span id="basic-addon1">Descrição: </span>
