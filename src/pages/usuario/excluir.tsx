@@ -1,4 +1,4 @@
-import "../../styles/usuario-style.css";
+import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -9,7 +9,7 @@ const Excluir = (props: any) => {
     const [user, setUser] = useState({id:'', nome:'', email:'', senha: ''});
     const navigate = useNavigate();
     
-    let myHeaders = new Headers();
+    const myHeaders = new Headers();
     myHeaders.append('x-access-token', localStorage.getItem('token')!);
 
     useEffect(() => {
@@ -22,9 +22,12 @@ const Excluir = (props: any) => {
     }, [])
   
       const excluir = () => { 
-        axios.delete(`http://localhost:4000/usuarios/excluirUsuario/${params.id}`).then(response => {
+        axios.delete(`http://localhost:4000/usuarios/excluirUsuario/${params.id}`, { headers: {'x-access-token':localStorage.getItem('token')!}})
+        .then(response => {
             if(response.status == 204 || response.status == 200 ) {
                 setError({status: false, message:''}); 
+                localStorage.removeItem('token');
+                localStorage.removeItem('idUsuario');
                 navigate(`/`);
             }
         }).catch(error => {
@@ -46,7 +49,7 @@ const Excluir = (props: any) => {
                 </div>
                 <div>
                     <span id="basic-addon1">Email:      </span>
-                    <input className="input" placeholder="Nome" type="text" value={user.email} disabled/>
+                    <input className="input" placeholder="Email" type="text" value={user.email} disabled/>
                 </div>
                 <div>
                     <button className="botao" id="basic-addon1" onClick={() => navigate(`/perfil/${params.id}`)}> Voltar </button>
@@ -54,7 +57,6 @@ const Excluir = (props: any) => {
                     { error.status ? <p className="error"> {error.message} </p> : null }
                 </div>       
             </div>
-            <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
         </div>
   )
 };

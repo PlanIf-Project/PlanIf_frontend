@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/usuario-style.css"
+import "../../styles/styles.css"
 import planIfLogo from "../../assets/logo.png"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -17,13 +17,13 @@ const Login = () => {
             axios.post('http://localhost:4000/usuarios/login', obj).then(response => {
                 if(response.status == 204 || response.status == 200 ) {
                     setError({status: false, message:''}); 
-                    localStorage.setItem('token', response.data.token)
+                    localStorage.setItem('token', response.data.token);
+                    localStorage.setItem('idUsuario', response.data.id);
                     navigate(`/perfil/${response.data.id}`);
                  }
                 
              }).catch(error => {
-                 console.log(error)
-                 if(error.response.status == 400) {
+                 if(error.response.status == 400 || error.response.status == 404) {
                      setError({status: true, message:`${error.response.data}`});
                  }
                   else if(error.response.status == 500) {

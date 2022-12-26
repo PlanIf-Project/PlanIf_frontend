@@ -1,4 +1,4 @@
-import "../../styles/usuario-style.css";
+import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -26,7 +26,7 @@ const Editar = (props: any) => {
   
     const editar = () => { 
         let obj = {id: user.id , nome: user.nome, email: user.email, senha: user.senha};
-        axios.put('http://localhost:4000/usuarios/editarUsuario', obj)
+        axios.put('http://localhost:4000/usuarios/editarUsuario', obj, { headers: {'x-access-token':localStorage.getItem('token')!}})
             .then(response => {
                 if(response.status == 204 || response.status == 200 ) {
                     setError({status: false, message:''}); 
@@ -53,7 +53,7 @@ const Editar = (props: any) => {
                 </div>
                 <div>
                     <span id="basic-addon1">Email:    </span>
-                    <input className="input" placeholder="Nome" type="text" value={user.email} onChange={(e)=> setUser({id: user.id , nome: user.nome, email: e.target.value, senha: user.senha})}/>
+                    <input className="input" placeholder="Email" type="text" value={user.email} onChange={(e)=> setUser({id: user.id , nome: user.nome, email: e.target.value, senha: user.senha})}/>
                     
                 </div>
                 <div>
@@ -62,7 +62,6 @@ const Editar = (props: any) => {
                     { error.status ? <p className="error"> {error.message} </p> : null }
                 </div>       
             </div>
-            <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
         </div>
     )
 };

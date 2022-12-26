@@ -32,6 +32,13 @@
     flex-direction: column;
     align-items: center;
 }
+.lista-tarefas {
+    min-height: 100vh;
+    background-color: var(--cor1);
+    color: var(--cor5);
+    padding: 3%;
+}
+
 .logo {
     width: 80px;
     margin-left: -60px;
@@ -60,8 +67,9 @@
     color: var(--cor5);
     border: none;
     border-radius: 25px;
-    height: 30px;
-    width: 150px;
+    min-height: 30px;
+    min-width: 150px;
+    padding: 5px;
     margin-top: 20px;
     cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import "../../styles/usuario-style.css";
+import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -32,7 +32,11 @@ const Perfil = (props: any) => {
     
     const logout = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('idUsuario');
         navigate(`/login`);
+    }
+    const listaTarefas = () => {
+        navigate(`/tarefas`)
     }
         
     return (
@@ -40,20 +44,21 @@ const Perfil = (props: any) => {
             <div className="box">
                 <div>
                     <span id="basic-addon1">Nome: </span>
-                    <span aria-label="Username" aria-describedby="basic-addon1">{user.nome}</span>
+                    <span aria-label="Nome" aria-describedby="basic-addon1">{user.nome}</span>
                 </div>
                 <div>
                     <span id="basic-addon1">Email: </span>
-                    <span aria-label="Username" aria-describedby="basic-addon1">{user.email}</span>
+                    <span aria-label="Email" aria-describedby="basic-addon1">{user.email}</span>
                 </div>
                 <div>
                     <button className="botao" id="basic-addon1" onClick={editar}>Editar</button>
                     <button className="botao" id="basic-addon1" onClick={excluir}>Excluir</button>
-                </div>       
+                </div>
+                <br></br><br></br>
+                <button className="botao" id="basic-addon1" onClick={listaTarefas}> Lista de Tarefas</button>
                 <br></br><br></br>
                 <button className="botao" id="basic-addon1" onClick={logout}>Sair</button>
             </div>
-            <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
         </div>
     )
 };
