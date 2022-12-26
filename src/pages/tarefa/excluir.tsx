@@ -2,7 +2,6 @@ import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import moment from "moment";
 
 const ExcluirTarefa = (props: any) => {
     const params = useParams();
@@ -45,9 +44,15 @@ const ExcluirTarefa = (props: any) => {
                     <input className="input" placeholder="Nome" type="text" value={tarefa.nome} disabled/>
                 </div>
                 <div>
-                    <span id="basic-addon1">Data:      </span>
-                    <input className="input" placeholder="Data" type="text" value={moment(tarefa.data).format('DD/MM/YYYY')} disabled/>
+                { tarefa.data != '' ? <>
+                    <span id="basic-addon1"> Data:    </span>
+                    <input className="input" placeholder="Data" type="date" value={tarefa.data} disabled/>
+                </> 
+                : null 
+                }
+
                 </div>
+               
                 <div>
                     <span id="basic-addon1">Descrição:      </span>
                     <input className="input" placeholder="Descrição" type="text" value={tarefa.descricao} disabled/>

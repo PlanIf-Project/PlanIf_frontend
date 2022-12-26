@@ -38,26 +38,60 @@ const DetalhesTarefa = (props: any) => {
     return (
         <div className="page">
             <div className="box">
-                <div>
-                    <span id="basic-addon1">Nome: </span>
-                    <span aria-label="Nome" aria-describedby="basic-addon1">{tarefa.nome}</span>
-                </div>
-                <div>
-                    <span id="basic-addon1">Data: </span>
-                    <span aria-label="Data" aria-describedby="basic-addon1">{moment(tarefa.data).format('DD/MM/YYYY')}</span>
-                </div>
-                <div>
-                    <span id="basic-addon1">Descrição: </span>
-                    <span aria-label="Descricao" aria-describedby="basic-addon1">{tarefa.descricao}</span>
-                </div>
-                <div>
-                    <button className="botao" id="basic-addon1" onClick={editar}>Editar</button>
-                    <button className="botao" id="basic-addon1" onClick={excluir}>Excluir</button>
-                </div>       
-                <br></br><br></br>
+            { 
+                (tarefa.feito == true) ?
+                <>
+                    <div style={{ textDecorationLine: 'line-through' }}>
+                        <div>
+                            <span id="basic-addon1">Nome: </span>
+                            <span aria-label="Nome" aria-describedby="basic-addon1">{tarefa.nome}</span>
+                        </div>
+                        <div>
+                        { tarefa.data != '' ? <>
+                            <span id="basic-addon1">Data: </span>
+                            <span aria-label="Data" aria-describedby="basic-addon1"> {moment(tarefa.data).format('DD/MM/YYYY')} </span>
+                            </> 
+                            : null 
+                        }
+                        </div>
+                        <div>
+                            <span id="basic-addon1">Descrição: </span>
+                            <span aria-label="Descricao" aria-describedby="basic-addon1">{tarefa.descricao}</span>
+                        </div>
+                        <div>
+                            <button className="botao" id="basic-addon1" onClick={editar}>Editar</button>
+                            <button className="botao" id="basic-addon1" onClick={excluir}>Excluir</button>
+                        </div>       
+                    </div>
+                </> 
+                : 
+                <>
+                    <div>
+                        <div>
+                            <span id="basic-addon1">Nome: </span>
+                            <span aria-label="Nome" aria-describedby="basic-addon1">{tarefa.nome}</span>
+                         </div>
+                        <div>
+                            { tarefa.data != '' ? <>
+                                <span id="basic-addon1">Data: </span>
+                                <span aria-label="Data" aria-describedby="basic-addon1"> {moment(tarefa.data).format('DD/MM/YYYY')} </span>
+                                </> 
+                                : null 
+                            }
+                        </div>
+                        <div>
+                            <span id="basic-addon1">Descrição: </span>
+                            <span aria-label="Descricao" aria-describedby="basic-addon1">{tarefa.descricao}</span>
+                        </div>
+                        <div>
+                            <button className="botao" id="basic-addon1" onClick={editar}>Editar</button>
+                            <button className="botao" id="basic-addon1" onClick={excluir}>Excluir</button>
+                        </div>
+                    </div>
+                    </>
+                            }
                 <button className="botao" id="basic-addon1" onClick={voltar}>Voltar</button>
             </div>
-            <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
         </div>
     )
 };

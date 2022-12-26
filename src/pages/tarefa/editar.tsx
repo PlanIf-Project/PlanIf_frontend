@@ -2,7 +2,6 @@ import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import * as moment from 'moment';
 
 const EditarTarefa = (props: any) => {
     const params = useParams();
@@ -52,8 +51,7 @@ const EditarTarefa = (props: any) => {
                 </div>
                 <div>
                     <span id="basic-addon1"> Data:    </span>
-                    <input className="input" placeholder="Data" type="text" value={moment(tarefa.data).format('DD/MM/YYYY')} onChange={(e)=> setTarefa({id: tarefa.id, nome: tarefa.nome, data: e.target.value, descricao: tarefa.descricao, feito:  tarefa.feito})}/>
-                    
+                    <input className="input" placeholder="Data" type="date" value={tarefa.data} onChange={(e)=> setTarefa({id: tarefa.id, nome: tarefa.nome, data: e.target.value, descricao: tarefa.descricao, feito:  tarefa.feito})}/>
                 </div>
                 <div>
                     <span id="basic-addon1"> Descrição:    </span>
