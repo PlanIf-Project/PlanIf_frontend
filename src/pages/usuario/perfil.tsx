@@ -38,6 +38,10 @@ const Perfil = (props: any) => {
     const listaTarefas = () => {
         navigate(`/tarefas`)
     }
+
+    const listaDisciplinas = () => {
+        navigate(`/disciplinas`)
+    }
         
     return (
         <div className="page">
@@ -56,6 +60,8 @@ const Perfil = (props: any) => {
                 </div>
                 <br></br><br></br>
                 <button className="botao" id="basic-addon1" onClick={listaTarefas}> Lista de Tarefas</button>
+                <br></br><br></br>
+                <button className="botao" id="basic-addon1" onClick={listaDisciplinas}> Lista de Disciplinas</button>
                 <br></br><br></br>
                 <button className="botao" id="basic-addon1" onClick={logout}>Sair</button>
             </div>
