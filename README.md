@@ -6,4 +6,4 @@
 * Após esse comando, o terminal vai exibir o link que você deverá abrir para visualizar a aplicação.
 
 #### Obs.:
-* O projeto ainda está sendo implementado, então atualmente só tem funcionalidades que dizem respeito ao perfil e as tarefas, e ainda está sem a estilização final.
+* O projeto ainda está sendo implementado, então atualmente só tem funcionalidades que dizem respeito ao perfil, as tarefas e as disciplinas. Porém, ainda está sem a estilização final.

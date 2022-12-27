@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../../styles/styles.css";
 import { useNavigate, useParams } from "react-router-dom";
 
-const Index = () => {
+const ListaUsuario = () => {
   const [usuarios, setUsuarios] = useState([{id: '', nome:'', email: '', senha:''}]);
   const [carregando, setCarregando] = useState(true);
   const navigate = useNavigate();
@@ -52,4 +52,4 @@ const Index = () => {
   );
 }
 
-export default Index;
+export default ListaUsuario;

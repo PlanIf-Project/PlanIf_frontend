@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const Excluir = (props: any) => {
+const ExcluirUsuario = (props: any) => {
     const params = useParams();
     const [error, setError] = useState({status: false, message: ''});
     const [user, setUser] = useState({id:'', nome:'', email:'', senha: ''});
@@ -61,4 +61,4 @@ const Excluir = (props: any) => {
   )
 };
 
-export default Excluir;
+export default ExcluirUsuario;

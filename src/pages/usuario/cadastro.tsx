@@ -4,7 +4,7 @@ import planIfLogo  from "../../assets/logo.png";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-const Cadastro = (props: any) => {
+const CadastroUsuario = (props: any) => {
     const [error, setError] = useState({status: false, message: ''});
     const [userName, setUserName] = useState('');
     const [userEmail, setUserEmail] = useState('');
@@ -83,4 +83,4 @@ const Cadastro = (props: any) => {
   )
 };
 
-export default Cadastro;
+export default CadastroUsuario;

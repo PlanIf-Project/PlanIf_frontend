@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const Editar = (props: any) => {
+const EditarUsuario = (props: any) => {
     const params = useParams();
     const [error, setError] = useState({status: false, message: ''});
     const [user, setUser] = useState({id:'', nome:'', email:'', senha: ''});
@@ -66,4 +66,4 @@ const Editar = (props: any) => {
     )
 };
 
-export default Editar;
+export default EditarUsuario;
