@@ -1,6 +1,7 @@
 import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AppNavBar from "../../components/navBar";
 
 const ListaDisciplinas = (props: any) => {
     const [disciplinas, setDisciplinas] = useState([{id:'', nome:'', descricao: '', idUsuario: ''}]);
@@ -41,6 +42,7 @@ const ListaDisciplinas = (props: any) => {
 
     return (
         <div className="lista-tarefas">
+            <AppNavBar></AppNavBar>
                 <button className="botao" id="basic-addon1" onClick={() => navigate(`/perfil/${localStorage.getItem('idUsuario')!}`)}> Perfil </button>
                 <button className="botao" id="basic-addon1" onClick={cadastrar}> Cadastrar nova disciplina </button>
                 <br></br><br></br>

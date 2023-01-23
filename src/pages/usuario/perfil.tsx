@@ -1,6 +1,8 @@
 import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import AppNavBar from "../../components/navBar";
+import { PerfilStyle } from "./styles/usuario";
 
 const Perfil = (props: any) => {
     const params = useParams();
@@ -44,8 +46,8 @@ const Perfil = (props: any) => {
     }
         
     return (
-        <div className="page">
-            <div className="box">
+        <PerfilStyle>
+                <AppNavBar></AppNavBar>
                 <div>
                     <span id="basic-addon1">Nome: </span>
                     <span aria-label="Nome" aria-describedby="basic-addon1">{user.nome}</span>
@@ -64,8 +66,7 @@ const Perfil = (props: any) => {
                 <button className="botao" id="basic-addon1" onClick={listaDisciplinas}> Lista de Disciplinas</button>
                 <br></br><br></br>
                 <button className="botao" id="basic-addon1" onClick={logout}>Sair</button>
-            </div>
-        </div>
+        </PerfilStyle>
     )
 };
 

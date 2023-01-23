@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import AppNavBar from "../../components/navBar";
 
 const ListaTarefas = (props: any) => {
     const [tarefas, setTarefas] = useState([{id:'', nome:'', data:'', descricao: '', feito: false, idUsuario: ''}]);
@@ -63,6 +64,7 @@ const ListaTarefas = (props: any) => {
 
     return (
         <div className="lista-tarefas">
+            <AppNavBar></AppNavBar>
                 <button className="botao" id="basic-addon1" onClick={() => navigate(`/perfil/${localStorage.getItem('idUsuario')!}`)}> Perfil </button>
                 <button className="botao" id="basic-addon1" onClick={cadastrar}> Cadastrar nova tarefa </button>
                 <br></br><br></br>

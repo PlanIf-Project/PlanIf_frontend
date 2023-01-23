@@ -1,19 +1,30 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
-import "../styles/perfil-style.css";
+import "./styles/nav-bar.ts";
+import { Header } from "./styles/nav-bar";
 
 const AppNavBar = (props: any) => {
     return (
-        <Navbar className="navbar">
-            <Container>
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-            <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
-            </Nav>
-            </Container>
-      </Navbar>
-)
+        <Header>
+            <nav>
+                <div>
+                    <ul>
+                        <li> <span className="mymenu">PlanIf </span></li>
+                        <li>
+                            <a className="mymenu" href="/tarefas"> Tarefas </a>
+                        </li>
+                        <li>
+                            <a className="mymenu" href="/disciplinas"> Disciplinas </a>
+                        </li>
+                        <li>
+                            <a className="mymenu" href={`/perfil/${localStorage.getItem('idUsuario')}`}> Perfil </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            
+        </Header>
+    )
 }
 
 export default AppNavBar;
