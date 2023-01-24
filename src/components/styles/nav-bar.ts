@@ -11,24 +11,37 @@ export const Header = styled.header`
         --cor7: #ffffff;
     }
 
-    background-color: #51718C;
+    background-color: var(--cor3);
     min-width: 100%;
     min-height: 5%;
     position: fixed;
     top: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    color: #ffffff;
+    
+    nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        color: #ffffff;
+    }
+
+    nav li {
+        margin-top: auto;
+    }
+
+    .title {
+        font-family: 'open_sansbold';
+        font-size:1.8em;
+        font weight: bold;
+        color: #ffffff;
+    }
 
     li {
         padding-right: 20px;
         display: inline-block;
         list-style:none;
     }
-
-
+    
     li .mymenu {
         font-family: 'open_sansbold';
         font-size:1.6em;
@@ -38,7 +51,15 @@ export const Header = styled.header`
         border-bottom: 4px solid transparent;
         -webkit-transition: border-bottom .3s linear;
     }
+
     li .mymenu:hover {  
         border-bottom:4px solid #ffffff;
     }
+
+    .selecionado {
+        color: red
+        border-bottom:4px solid #ffffff;
+    }
+
+
 `

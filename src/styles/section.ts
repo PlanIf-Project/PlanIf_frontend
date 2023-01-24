@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const PerfilStyle = styled.div`
+export const Section = styled.main`
 min-height: 100vh;
 background-color: var(--cor1);
 display: flex;

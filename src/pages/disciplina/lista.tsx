@@ -1,7 +1,8 @@
 import "../../styles/styles.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AppNavBar from "../../components/navBar";
+import Header from "../../components/navBar";
+import { Section } from "../../styles/section";
 
 const ListaDisciplinas = (props: any) => {
     const [disciplinas, setDisciplinas] = useState([{id:'', nome:'', descricao: '', idUsuario: ''}]);
@@ -24,10 +25,10 @@ const ListaDisciplinas = (props: any) => {
             });
         }, 
     [disciplinas]);
-      
+
     const editar = (id: number) => { 
         navigate(`/disciplinas/editar/${id}`);
-     }
+    }
 
     const excluir = (id: number) => { 
         navigate(`/disciplinas/excluir/${id}`);
@@ -41,8 +42,8 @@ const ListaDisciplinas = (props: any) => {
     }
 
     return (
-        <div className="lista-tarefas">
-            <AppNavBar></AppNavBar>
+        <Section>
+            <Header></Header>
                 <button className="botao" id="basic-addon1" onClick={() => navigate(`/perfil/${localStorage.getItem('idUsuario')!}`)}> Perfil </button>
                 <button className="botao" id="basic-addon1" onClick={cadastrar}> Cadastrar nova disciplina </button>
                 <br></br><br></br>
@@ -78,7 +79,7 @@ const ListaDisciplinas = (props: any) => {
                         }
                     </div> 
                 }
-        </div>
+        </Section>
     );
 };
 
